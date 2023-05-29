@@ -9,6 +9,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  http: ^1.0.0
+  intl: ^0.18.1
 
 dev_dependencies:
   flutter_test:
@@ -17,3 +19,16 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  
+  assets:
+    - assets/images/drawer_header_img.jpg
+    - assets/images/callbox.png
+    - assets/images/cecaw.jpeg
+    - assets/images/drawer_header_img.jpg
+    - assets/images/friandises.jpeg
+    - assets/images/mtn.jpeg
+    - assets/images/nina.png
+    - assets/images/orange.png
+    - assets/images/remede.png
+    - assets/images/reserve.jpeg
+    - assets/images/smobilpay.png
