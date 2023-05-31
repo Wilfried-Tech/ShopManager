@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shop_manager/components/drawer_header.dart';
-import 'package:shop_manager/pages/main.dart';
+import 'package:shop_manager/screens/main.dart';
 import 'package:shop_manager/utils/ui_helpers.dart';
 
 class ShopManagerDrawer extends StatefulWidget {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:shop_manager/components/report_item.dart';
 import 'package:shop_manager/fragments/fragment.dart';
+import 'package:shop_manager/fragments/reports/future_report_builder.dart';
 import 'package:shop_manager/utils/helpers.dart';
 
 class ReportFragment extends Fragment {
@@ -15,6 +15,10 @@ class ReportFragment extends Fragment {
 }
 
 class _ReportFragmentState extends State<ReportFragment> {
+  String _day = "last";
+
+  void setday(String s) => setState(() => _day = s);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,16 +43,7 @@ class _ReportFragmentState extends State<ReportFragment> {
                     color: Theme.of(context).primaryColor),
               ),
             ),
-            Expanded(
-              child: ListView.builder(
-                  itemCount: 10,
-                  itemBuilder: (context, index) {
-                    return const ReportItem(
-                        type: ReportType.friandise,
-                        title: "Reserve",
-                        value: 40000);
-                  }),
-            )
+            Expanded(child: FutureReportBuilder(date: _day, setday: setday))
           ],
         ));
   }

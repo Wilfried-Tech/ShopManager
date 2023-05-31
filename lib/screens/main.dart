@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shop_manager/components/drawer.dart';
 import 'package:shop_manager/fragments/fragment.dart';
 import 'package:shop_manager/fragments/medicine_fragment.dart';
-import 'package:shop_manager/fragments/report_fragment.dart';
+import 'package:shop_manager/fragments/reports/reports.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});

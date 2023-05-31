@@ -1,4 +1,13 @@
-enum ReportType { mtn, orange, android, friandise, remede, callBox, reserve }
+enum ReportType {
+  mtn,
+  orange,
+  android,
+  friandise,
+  remede,
+  callbox,
+  reserve,
+  cecaw
+}
 
 extension StringExtension on String {
   String capitalize() =>
@@ -23,11 +32,18 @@ String getImageFromReportType(ReportType type) {
       return "assets/images/friandises.jpeg";
     case ReportType.remede:
       return "assets/images/remede.png";
-    case ReportType.callBox:
+    case ReportType.callbox:
       return "assets/images/callbox.png";
     case ReportType.reserve:
       return "assets/images/reserve.jpeg";
+    case ReportType.cecaw:
+      return "assets/images/cecaw.jpeg";
     default:
       return "";
   }
+}
+
+reportTypeByName(String name) {
+  name = name == "smobilpay"? "android" : name;
+  return ReportType.values.byName(name);
 }
