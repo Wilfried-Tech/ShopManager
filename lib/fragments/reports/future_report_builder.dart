@@ -46,7 +46,7 @@ class FutureReportBuilder extends StatelessWidget {
             },
           );
         } else if (snapshot.hasError) {
-          return Center(
+          return const Center(
             child: Text("Retry"),
           ); //build(context);
         } else {
