@@ -10,18 +10,18 @@ class Balance {
     var data = jsonDecode(json);
     return Balance(
         DateFormat("yyyy-MM-dd").parse(data["day"]),
-        int.parse(data["mtn"]),
-        int.parse(data["orange"]),
-        int.parse(data["smobilpay"]),
-        int.parse(data["friandise"]),
-        int.parse(data["remede"]),
-        int.parse(data["callbox"]),
-        int.parse(data["reserve"]),
-        int.parse(data["cecaw"]));
+        double.parse(data["mtn"]),
+        double.parse(data["orange"]),
+        double.parse(data["smobilpay"]),
+        double.parse(data["friandise"]),
+        double.parse(data["remede"]),
+        double.parse(data["callbox"]),
+        double.parse(data["reserve"]),
+        double.parse(data["cecaw"]));
   }
 
   DateTime day;
-  int mtn, orange, smobilpay, friandise, remede, callbox, reserve, cecaw;
+  double mtn, orange, smobilpay, friandise, remede, callbox, reserve, cecaw;
 
   Map<String, dynamic> toMap() {
     return {

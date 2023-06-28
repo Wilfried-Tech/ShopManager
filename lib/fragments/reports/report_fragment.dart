@@ -8,16 +8,17 @@ class ReportFragment extends Fragment {
   const ReportFragment(super.parentState, {super.key});
 
   @override
-  State<ReportFragment> createState() => _ReportFragmentState();
+  State<ReportFragment> createState() => ReportFragmentState();
 
   @override
   void optionPressed() {}
 }
 
-class _ReportFragmentState extends State<ReportFragment> {
-  String _day = "last";
-
-  void setday(String s) => setState(() => _day = s);
+class ReportFragmentState extends State<ReportFragment> {
+  final String _day = "last";
+  String _sday = "";
+  
+  void setday(String s) => setState(() => _sday = DateFormat.yMMMMEEEEd("fr_FR").format(DateFormat("yyyy-MM-dd").parse(s)));
 
   @override
   Widget build(BuildContext context) {
@@ -33,9 +34,7 @@ class _ReportFragmentState extends State<ReportFragment> {
             Container(
               padding: const EdgeInsets.all(5),
               child: Text(
-                DateFormat.yMMMMEEEEd("fr_FR")
-                    .format(DateTime.now())
-                    .capitalizeAll(),
+                _sday.capitalizeAll(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     fontWeight: FontWeight.bold,

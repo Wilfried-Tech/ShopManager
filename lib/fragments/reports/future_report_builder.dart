@@ -13,11 +13,12 @@ class FutureReportBuilder extends StatelessWidget {
 
   Future<List<ReportItem>> _fetchReportData() async {
     String day = date == null ? "last" : date!;
-    final client = RetryClient(http.Client());
+    final client = RetryClient(http.Client(), retries: 5);
     final response = await client.get(getRequestUrl("reports/$day"));
 
     if (response.statusCode == 200) {
       List<ReportItem> list = [];
+      try {
         final balance = Balance.fromJSON(response.body).toMap();
         balance.forEach((key, value) {
           if (key != "day") {
@@ -25,7 +26,11 @@ class FutureReportBuilder extends StatelessWidget {
                 type: reportTypeByName(key), title: key, value: value));
           }
         });
-      setday(balance["day"]);
+        setday(balance["day"]);
+      } catch (e) {
+        throw Exception(
+            "Couldn't fetch data now, check your connection and retry");
+      }
       return list;
     } else {
       throw Exception(
@@ -46,16 +51,22 @@ class FutureReportBuilder extends StatelessWidget {
             },
           );
         } else if (snapshot.hasError) {
-          return const Center(
-            child: Text("Retry"),
-          ); //build(context);
+          Logger.log(snapshot.error);
+          return Center(
+              child: SizedBox(
+                  width: 50,
+                  height: 50,
+                  child: CircularProgressIndicator(
+                    color: Theme.of(context).primaryColor,
+                  )));
         } else {
-          return ListView.builder(
-            itemCount: 8,
-            itemBuilder: (context, index) {
-              return ReportItem.shimming();
-            },
-          );
+          return Center(
+              child: SizedBox(
+                  width: 50,
+                  height: 50,
+                  child: CircularProgressIndicator(
+                    color: Theme.of(context).primaryColor,
+                  )));
         }
       },
     );

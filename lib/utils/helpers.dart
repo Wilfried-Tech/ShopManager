@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 enum ReportType {
   mtn,
   orange,
@@ -46,4 +48,12 @@ String getImageFromReportType(ReportType type) {
 reportTypeByName(String name) {
   name = name == "smobilpay"? "android" : name;
   return ReportType.values.byName(name);
+}
+
+class Logger {
+  static void log(Object? o){
+    if (kDebugMode) {
+      print(o);
+    }
+  }
 }
